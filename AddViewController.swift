@@ -23,6 +23,11 @@ class AddViewController: UIViewController, UITextFieldDelegate, UITextViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        
+        
+        
+        
         targetLabel.delegate = self
         titleTextlabel.delegate = self
 

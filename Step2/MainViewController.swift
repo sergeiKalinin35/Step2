@@ -9,14 +9,16 @@ import UIKit
 
 
 
-class MainViewController: UICollectionViewController {
+class MainViewController: UITableViewController {
     
     var models = [MyReminder]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-  
+        tableView.rowHeight = 80
+        
+        
     }
 
     @IBAction func didTapAdd() {
@@ -35,7 +37,7 @@ class MainViewController: UICollectionViewController {
                 self.navigationController?.popToRootViewController(animated: true)
                 let new = MyReminder(target: titleText, title: bodyText, date: targetDates)
                 self.models.append(new)
-                self.collectionView.reloadData()
+                self.tableView.reloadData()
             
                 
                 let content = UNMutableNotificationContent()
@@ -72,37 +74,32 @@ class MainViewController: UICollectionViewController {
        
     }
     
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         models.count
     }
-
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "item", for: indexPath) as! CollectionViewCell
-        cell.oneLabel?.text = models[indexPath.item].target
-        cell.titleLabel.text = models[indexPath.item].title
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell" , for: indexPath) as! TableViewCell
+        
+        cell.oneLabel?.text = models[indexPath.row].target
+        cell.titleLabel.text = models[indexPath.row].title
     
         let date = models[indexPath.row].date
         
         let formatter = DateFormatter()
-        formatter.dateFormat = "MMM, dd, YYYY  hh:mm"
+        let localeID = Locale.preferredLanguages.first
+            formatter.locale = Locale(identifier: localeID!)
+        formatter.dateFormat = "HH:mm 🕐  EEEE, MMM d, yyyy"
         
         cell.timeLabel?.text = formatter.string(from: date)
+   
+       
         
         return cell
     }
-
+    
    
-}
-
-
-extension MainViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: UIScreen.main.bounds.width - 30, height: 100)
-    }
-    
-    
-    
 }
 
 struct MyReminder {

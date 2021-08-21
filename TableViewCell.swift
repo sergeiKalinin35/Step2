@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionViewCell: UICollectionViewCell {
+class TableViewCell: UITableViewCell {
     
     
     @IBOutlet var oneLabel: UILabel!
