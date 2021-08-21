@@ -83,6 +83,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tab" destination="ebf-k9-B36" id="Lto-6B-veq"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDF-aY-SQf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -113,15 +116,15 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="xIO-SW-cCT">
-                                <rect key="frame" x="20" y="54" width="374" height="213"/>
+                                <rect key="frame" x="20" y="104" width="374" height="163"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Target..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bSs-gx-WHU">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="137"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="87"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Цели и двери..." translatesAutoresizingMaskIntoConstraints="NO" id="rXa-Vk-Dz6">
-                                        <rect key="frame" x="0.0" y="163" width="374" height="50"/>
+                                        <rect key="frame" x="0.0" y="113" width="374" height="50"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" name=".SFUI-Semibold" family=".AppleSystemUIFont" pointSize="22"/>
@@ -141,7 +144,7 @@
                         <viewLayoutGuide key="safeArea" id="Te2-0Y-sdy"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xIO-SW-cCT" firstAttribute="top" secondItem="Te2-0Y-sdy" secondAttribute="top" constant="10" id="HxZ-De-ltY"/>
+                            <constraint firstItem="xIO-SW-cCT" firstAttribute="top" secondItem="Te2-0Y-sdy" secondAttribute="top" constant="60" id="HxZ-De-ltY"/>
                             <constraint firstItem="dJJ-ok-Ern" firstAttribute="centerX" secondItem="bss-Nb-jQU" secondAttribute="centerX" id="K0f-XB-eUS"/>
                             <constraint firstItem="xIO-SW-cCT" firstAttribute="leading" secondItem="Te2-0Y-sdy" secondAttribute="leading" constant="20" id="ZUs-3P-h4L"/>
                             <constraint firstItem="Te2-0Y-sdy" firstAttribute="trailing" secondItem="xIO-SW-cCT" secondAttribute="trailing" constant="20" id="e8c-RY-h0l"/>

@@ -13,11 +13,19 @@ class MainViewController: UITableViewController {
     
     var models = [MyReminder]()
 
+   
+    @IBOutlet var tab: UITableView!
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.rowHeight = 80
+     //   tableView.rowHeight = 80
         
+        //добавляем кнопку edit
+        navigationItem.leftBarButtonItem = editButtonItem
         
     }
 
@@ -68,13 +76,19 @@ class MainViewController: UITableViewController {
         
         
     }
-//dddfffffffdddddd
+    // создаем кнопку боковую
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+       return .delete
+   }
     
-    @IBAction func didTapTest() {
-       
-    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+                  tableView.deselectRow(at: indexPath, animated: true)
+      
+        }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    
+
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         models.count
     }
     
@@ -99,7 +113,42 @@ class MainViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+         return 80
+      }
+    
+    // удаление ячейки
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+         if editingStyle == .delete {
+             models.remove(at: indexPath.row)
+             tab.deleteRows(at: [indexPath], with: .automatic)
+         }
+    
+     }
+        // удаляем revome и возвращаем insert
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+           let currenModel =  models.remove(at: sourceIndexPath.row)
+            models.insert(currenModel, at: destinationIndexPath.row)
+        }
 }
+    // снять выделение с ячейки и переходим инициирует переход
+func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+              tableView.deselectRow(at: indexPath, animated: true)
+  
+    }
+    
+    //создаем кнопку и убираем боковое меню для редактирования navigationItem.leftBarButtonItem = editButtonItem для передвижени  строк
+  //  override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+  //      .none
+   // }
+    
+  //  override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+ //       false
+ //   }
+ 
+    
+    
+
 
 struct MyReminder {
     
@@ -108,3 +157,5 @@ struct MyReminder {
     let date: Date
  
 }
+
+

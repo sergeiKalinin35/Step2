@@ -32,7 +32,7 @@ class AddViewController: UIViewController, UITextFieldDelegate, UITextViewDelega
         titleTextlabel.delegate = self
 
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .done, target: self, action: #selector(didTapSaveButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "✔️", style: .done, target: self, action: #selector(didTapSaveButton))
        
     }
     
